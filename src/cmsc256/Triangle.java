@@ -25,13 +25,13 @@ public class Triangle  {
       
       if (aIn <= 0 || bIn <= 0 || cIn <= 0) {
          throw new IllegalArgumentException("Sides: " + aIn + " " + bIn + " " + cIn
-            + " -- <replace this string>");       // add an explanation why this exception is being thrown.
+            + "may not be less than or equal to zero");       // add an explanation why this exception is being thrown.
       }
      
       if ((aIn >= bIn + cIn) || (bIn >= aIn + cIn) || (cIn >= aIn + bIn)) {
          throw new IllegalArgumentException("Sides: "
             + aIn + " " + bIn + " " + cIn
-            + " -- <replace this string>");      // add an explanation why this exception is being thrown.
+            + "may not exceed the sum of two other sides");      // add an explanation why this exception is being thrown.
       }
      
       sideA = aIn;
@@ -49,6 +49,26 @@ public class Triangle  {
    public String classify() {
       String result = "";
       //TODO:  implement this method according to the specification in the comment block
+
+      if(sideA == sideB || sideB == sideC || sideC == sideA)
+      {
+         if(sideA == sideB && sideA == sideC)
+         {
+            result = "equilateral";
+         }
+         else
+         {
+            result = "isosceles";
+         }
+      }
+      else if(sideA != sideB && sideB != sideC && sideC != sideA)
+      {
+         result = "scalene";
+      }
+      else
+      {
+         result = "not a triangle";
+      }
       return result;
    }
 
